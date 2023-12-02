@@ -58,6 +58,28 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define WALKER_BUTTON_Pin GPIO_PIN_0
+#define WALKER_BUTTON_GPIO_Port GPIOA
+#define BUTTON_1_Pin GPIO_PIN_1
+#define BUTTON_1_GPIO_Port GPIOA
+#define BUTTON_2_Pin GPIO_PIN_4
+#define BUTTON_2_GPIO_Port GPIOA
+#define WALKER_BUZZER_Pin GPIO_PIN_6
+#define WALKER_BUZZER_GPIO_Port GPIOA
+#define BUTTON_3_Pin GPIO_PIN_0
+#define BUTTON_3_GPIO_Port GPIOB
+#define WALKER_LIGHT_0_Pin GPIO_PIN_10
+#define WALKER_LIGHT_0_GPIO_Port GPIOB
+#define WALKER_LIGHT_1_Pin GPIO_PIN_8
+#define WALKER_LIGHT_1_GPIO_Port GPIOA
+#define TRAFFIC_LIGHT_1_0_Pin GPIO_PIN_10
+#define TRAFFIC_LIGHT_1_0_GPIO_Port GPIOA
+#define TRAFFIC_LIGHT_1_1_Pin GPIO_PIN_3
+#define TRAFFIC_LIGHT_1_1_GPIO_Port GPIOB
+#define TRAFFIC_LIGHT_2_1_Pin GPIO_PIN_4
+#define TRAFFIC_LIGHT_2_1_GPIO_Port GPIOB
+#define TRAFFIC_LIGHT_2_0_Pin GPIO_PIN_5
+#define TRAFFIC_LIGHT_2_0_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
