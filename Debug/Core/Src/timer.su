@@ -1,0 +1,5 @@
+timer.c:15:6:timerInnit	16	static
+timer.c:27:6:setTimer	16	static
+timer.c:34:6:RunTimer	16	static
+timer.c:53:6:timerRun	8	static
+timer.c:57:5:isTimerOn	16	static

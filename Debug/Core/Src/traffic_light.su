@@ -1,0 +1,4 @@
+traffic_light.c:16:6:setTrafficLightDefault	16	static
+traffic_light.c:34:6:setRed	16	static
+traffic_light.c:62:6:setGreen	16	static
+traffic_light.c:90:6:setAmber	16	static
