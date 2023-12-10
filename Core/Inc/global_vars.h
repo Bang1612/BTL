@@ -16,6 +16,7 @@
 #include "fsm_auto.h"
 #include "fsm_manual.h"
 #include "pedestrian.h"
+#include <stdio.h>
 
 #define INIT_STATE 1
 #define RED_STATE 2

@@ -8,20 +8,22 @@
 
 //Timer 0: 1 sec for LED
 //Timer 2: 500 ms
-//Timer 3: 50ms for press
+//Timer
 
-
-
-void timerInnit(unsigned int index){
-	if(index ==0){
-		timer[index].count=0;
-		timer[index].flag=1;
+void Innitial_Timer(int i){
+	if(i == 0){
+		timer[i].count =0;
+		timer[i].flag =1;
 	}
 	else{
-		timer[index].count=0;
-		timer[index].flag=1;
-		timerInnit(index--);
+		timer[i].count =0;
+		timer[i].flag =1;
+		Innitial_Timer(i-1);
 	}
+}
+
+void timerInnit(void){
+	Innitial_Timer(NUMBER_OF_TIMER-1);
 }
 
 void setTimer( unsigned int index, unsigned int count){
@@ -46,12 +48,12 @@ void RunTimer(int index){
 		} else {
 			timer[index].count--;
 		}
-		RunTimer(index--);
+		RunTimer(index-1);
 	}
 }
 
 void timerRun(void){
-	RunTimer(NUMBER_OF_TIMER);
+	RunTimer(NUMBER_OF_TIMER-1);
 }
 
 int isTimerOn(unsigned index){

@@ -50,6 +50,9 @@ default.size.stdout \
 OBJDUMP_LIST += \
 super_traffic_light.list \
 
+OBJCOPY_HEX += \
+super_traffic_light.hex \
+
 OBJCOPY_BIN += \
 super_traffic_light.bin \
 
@@ -76,6 +79,11 @@ super_traffic_light.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_D
 	@echo 'Finished building: $@'
 	@echo ' '
 
+super_traffic_light.hex: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objcopy  -O ihex $(EXECUTABLES) "super_traffic_light.hex"
+	@echo 'Finished building: $@'
+	@echo ' '
+
 super_traffic_light.bin: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "super_traffic_light.bin"
 	@echo 'Finished building: $@'
@@ -83,10 +91,10 @@ super_traffic_light.bin: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DE
 
 # Other Targets
 clean:
-	-$(RM) $(SIZE_OUTPUT)$(OBJDUMP_LIST)$(EXECUTABLES)$(OBJS)$(S_DEPS)$(S_UPPER_DEPS)$(C_DEPS)$(OBJCOPY_BIN) super_traffic_light.elf
+	-$(RM) $(OBJCOPY_HEX)$(SIZE_OUTPUT)$(OBJDUMP_LIST)$(EXECUTABLES)$(OBJS)$(S_DEPS)$(S_UPPER_DEPS)$(C_DEPS)$(OBJCOPY_BIN) super_traffic_light.elf
 	-@echo ' '
 
-secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_BIN)
+secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_HEX) $(OBJCOPY_BIN)
 
 fail-specified-linker-script-missing:
 	@echo 'Error: Cannot find the specified linker script. Check the linker settings in the build configuration.'

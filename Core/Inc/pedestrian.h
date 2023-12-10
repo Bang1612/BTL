@@ -9,7 +9,7 @@
 #define INC_PEDESTRIAN_H_
 
 
-#include <stdio.h>
+
 #include "global_vars.h"
 
 void ped_run();

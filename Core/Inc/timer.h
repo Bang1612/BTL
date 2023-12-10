@@ -16,7 +16,7 @@ struct {
 } timer[NUMBER_OF_TIMER];
 // Timer 0 : lane 0
 // Timer 1: lane 1
-void timerInnit(unsigned int index);
+void timerInnit(void);
 void setTimer( unsigned int index, unsigned int count);
 void timerRun(void);
 int isTimerOn(unsigned int index);

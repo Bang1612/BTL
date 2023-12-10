@@ -9,7 +9,7 @@
 #define INC_FSM_AUTO_H_
 
 #include "global_vars.h"
-#include "pedestrian.h"
+
 
 void fsm_automatic_run(int lane);
 

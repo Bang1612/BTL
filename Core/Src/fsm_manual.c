@@ -31,39 +31,50 @@ void fsm_manual_run(){
 		case MODE_1:
 			fsm_automatic_run(0);
 			fsm_automatic_run(1);
-			ped_run();
+
 			if (isButtonPressed(0) == 1){
 				tempDuration = RED_DURATION;
 				changeMode(MODE_2);
+				HAL_GPIO_TogglePin(LED2_GPIO_Port	, LED2_Pin);
 //				Turn off pedestrian mode
 				PEDESTRIAN_MODE = 0;
-				HAL_GPIO_WritePin(WALKER_BUZZER_GPIO_Port, WALKER_BUZZER_Pin, RESET);
+//				HAL_GPIO_WritePin(WALKER_BUZZER_GPIO_Port, WALKER_BUZZER_Pin, RESET);
 			}
 //			Change light on
 			if(isButtonPressed(1) == 1){
+				setTrafficLightDefault(0);
+				setTrafficLightDefault(1);
 				if(LED_STATE[0] == GREEN_STATE || LED_STATE[0] == YELLOW_STATE){
 					LED_STATE[0]= RED_STATE;
+					setTimer(0, RED_DURATION*100);
 					LED_STATE[1]= GREEN_STATE;
+					setTimer(1, GREEN_DURATION*100);
+					if(PEDESTRIAN_MODE){
+						setGreen(2);
+					}
 
 				}
 				if (LED_STATE[0] == RED_STATE){
 					LED_STATE[0]= GREEN_STATE;
+					setTimer(0, GREEN_DURATION*100);
 					LED_STATE[1]= RED_STATE;
+					setTimer(1, RED_DURATION*100);
+					if(PEDESTRIAN_MODE){
+						setRed(2);
+					}
 				}
-				ped_run();
-				fsm_automatic_run(0);
-				fsm_automatic_run(1);
 			}
 //			Active pedestrian
 			if(isButtonPressed(3) == 1){
 				PEDESTRIAN_MODE = 1;
 				setTimer(3, PEDESTRIAN_DURATION*100);
 			//	Active Buzzer
-				HAL_GPIO_WritePin(WALKER_BUZZER_GPIO_Port, WALKER_BUZZER_Pin, SET);
+//				HAL_GPIO_WritePin(WALKER_BUZZER_GPIO_Port, WALKER_BUZZER_Pin, SET);
 			}
 			if(isTimerOn(3)){
-				PEDESTRIAN_MODE=0;
-				HAL_GPIO_WritePin(WALKER_BUZZER_GPIO_Port, WALKER_BUZZER_Pin, RESET);
+//				PEDESTRIAN_MODE=0;
+//				setTrafficLightDefault(2);
+//				HAL_GPIO_WritePin(WALKER_BUZZER_GPIO_Port, WALKER_BUZZER_Pin, RESET);
 			}
 			break;
 		case MODE_2:
@@ -83,10 +94,10 @@ void fsm_manual_run(){
 //				HAL_GPIO_TogglePin(GPIOA, RED1_Pin);
 //				HAL_GPIO_TogglePin(GPIOA, RED2_Pin);
 				HAL_GPIO_TogglePin(TRAFFIC_LIGHT_1_0_GPIO_Port, TRAFFIC_LIGHT_1_0_Pin);
-				HAL_GPIO_WritePin(TRAFFIC_LIGHT_1_1_GPIO_Port, TRAFFIC_LIGHT_1_1_Pin, SET);
-				HAL_GPIO_TogglePin(TRAFFIC_LIGHT_2_0_GPIO_Port, TRAFFIC_LIGHT_2_0_GPIO_Port);
-				HAL_GPIO_WritePin(TRAFFIC_LIGHT_2_1_GPIO_Port, TRAFFIC_LIGHT_2_1_Pin, SET);
-				setTimer(2, 25);
+				HAL_GPIO_WritePin(TRAFFIC_LIGHT_1_1_GPIO_Port, TRAFFIC_LIGHT_1_1_Pin, RESET);
+				HAL_GPIO_TogglePin(TRAFFIC_LIGHT_2_0_GPIO_Port, TRAFFIC_LIGHT_2_0_Pin);
+				HAL_GPIO_WritePin(TRAFFIC_LIGHT_2_1_GPIO_Port, TRAFFIC_LIGHT_2_1_Pin, RESET);
+				setTimer(2, 10);
 			}
 			break;
 		case MODE_3:
@@ -107,7 +118,7 @@ void fsm_manual_run(){
 				HAL_GPIO_TogglePin(TRAFFIC_LIGHT_1_1_GPIO_Port, TRAFFIC_LIGHT_1_1_Pin);
 				HAL_GPIO_TogglePin(TRAFFIC_LIGHT_2_0_GPIO_Port, TRAFFIC_LIGHT_2_0_Pin);
 				HAL_GPIO_TogglePin(TRAFFIC_LIGHT_2_1_GPIO_Port, TRAFFIC_LIGHT_2_1_Pin);
-				setTimer(2, 25);
+				setTimer(2, 10);
 			}
 			break;
 		case MODE_4:
@@ -136,11 +147,11 @@ void fsm_manual_run(){
 				GREEN_DURATION = tempDuration;
 			}
 			if (isTimerOn(2) == 1){
-				HAL_GPIO_WritePin(TRAFFIC_LIGHT_1_0_GPIO_Port, TRAFFIC_LIGHT_1_0_Pin, SET);
+				HAL_GPIO_WritePin(TRAFFIC_LIGHT_1_0_GPIO_Port, TRAFFIC_LIGHT_1_0_Pin, RESET);
 				HAL_GPIO_TogglePin(TRAFFIC_LIGHT_1_1_GPIO_Port, TRAFFIC_LIGHT_1_1_Pin);
-				HAL_GPIO_WritePin(TRAFFIC_LIGHT_2_0_GPIO_Port, TRAFFIC_LIGHT_2_0_Pin, SET);
+				HAL_GPIO_WritePin(TRAFFIC_LIGHT_2_0_GPIO_Port, TRAFFIC_LIGHT_2_0_Pin, RESET);
 				HAL_GPIO_TogglePin(TRAFFIC_LIGHT_2_1_GPIO_Port, TRAFFIC_LIGHT_2_1_Pin);
-				setTimer(2, 25);
+				setTimer(2, 10);
 			}
 			break;
 		default:
