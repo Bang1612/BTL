@@ -10,6 +10,6 @@
 
 #include "global_vars.h"
 
-void Display( int n);
+void Display( int n1, int n2);
 
 #endif /* INC_TRANSFER_H_ */

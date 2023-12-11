@@ -16,14 +16,7 @@ void changeMode(int mode){
 	setTimer(2, 25);
 }
 
-void displayDuration(int mode, int duration){
-//	display7SEG(0, mode);
-//	display7SEG(1, 0);
-//	display7SEG(2, duration%10);
-//	display7SEG(3, (int) (duration/10));
-	Display(mode);
-	Display(duration);
-}
+
 //handle manual setting
 void fsm_manual_run(){
 
@@ -71,14 +64,14 @@ void fsm_manual_run(){
 			//	Active Buzzer
 //				HAL_GPIO_WritePin(WALKER_BUZZER_GPIO_Port, WALKER_BUZZER_Pin, SET);
 			}
-			if(isTimerOn(3)){
+//			if(isTimerOn(3)){
 //				PEDESTRIAN_MODE=0;
 //				setTrafficLightDefault(2);
 //				HAL_GPIO_WritePin(WALKER_BUZZER_GPIO_Port, WALKER_BUZZER_Pin, RESET);
-			}
+//			}
 			break;
 		case MODE_2:
-			displayDuration(2, tempDuration);
+			Display(2, tempDuration);
 			if (isButtonPressed(0) == 1){
 				tempDuration = YELLOW_DURATION;
 				changeMode(MODE_3);
@@ -87,9 +80,17 @@ void fsm_manual_run(){
 				tempDuration++;
 				tempDuration %= 100;
 			}
+			if(isButtonLongPressed(1)==1){
+				if(isTimerOn(3) ==1){
+					tempDuration++;
+					tempDuration %= 100;
+					setTimer(3,50);
+				}
+			}
 			if (isButtonPressed(2) == 1){
 				RED_DURATION = tempDuration;
 			}
+
 			if (isTimerOn(2) == 1){
 //				HAL_GPIO_TogglePin(GPIOA, RED1_Pin);
 //				HAL_GPIO_TogglePin(GPIOA, RED2_Pin);
@@ -101,7 +102,7 @@ void fsm_manual_run(){
 			}
 			break;
 		case MODE_3:
-			displayDuration(3, tempDuration);
+			Display(3, tempDuration);
 			if (isButtonPressed(0) == 1){
 				tempDuration = GREEN_DURATION;
 				changeMode(MODE_4);
@@ -109,6 +110,13 @@ void fsm_manual_run(){
 			if (isButtonPressed(1) == 1){
 				tempDuration++;
 				tempDuration %= 100;
+			}
+			if(isButtonLongPressed(1)==1){
+				if(isTimerOn(3) ==1){
+					tempDuration++;
+					tempDuration %= 100;
+					setTimer(3,50);
+				}
 			}
 			if (isButtonPressed(2) == 1){
 				YELLOW_DURATION = tempDuration;
@@ -122,7 +130,7 @@ void fsm_manual_run(){
 			}
 			break;
 		case MODE_4:
-			displayDuration(4, tempDuration);
+			Display(4, tempDuration);
 			if (isButtonPressed(0) == 1){
 				LED_STATE [0] = INIT_STATE;
 				LED_STATE [1] = INIT_STATE;
@@ -142,6 +150,13 @@ void fsm_manual_run(){
 			if (isButtonPressed(1) == 1){
 				tempDuration++;
 				tempDuration %= 100;
+			}
+			if(isButtonLongPressed(1)==1){
+				if(isTimerOn(3) ==1){
+					tempDuration++;
+					tempDuration %= 100;
+					setTimer(3,50);
+				}
 			}
 			if (isButtonPressed(2) == 1){
 				GREEN_DURATION = tempDuration;

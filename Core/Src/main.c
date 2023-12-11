@@ -43,7 +43,7 @@
 TIM_HandleTypeDef htim2;
 TIM_HandleTypeDef htim3;
 
-UART_HandleTypeDef huart1;
+UART_HandleTypeDef huart3;
 
 /* USER CODE BEGIN PV */
 
@@ -54,7 +54,7 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_TIM2_Init(void);
 static void MX_TIM3_Init(void);
-static void MX_USART1_UART_Init(void);
+static void MX_USART3_UART_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -89,14 +89,15 @@ void test(int i){
 	}
 }
 
-uint8_t temp = 0;
-
+char temp[20]="HELO";
 void HAL_UART_RxCpltCallback ( UART_HandleTypeDef * huart ) {
-if( huart -> Instance == USART2 ) {
-		HAL_UART_Transmit (& huart1 , & temp , 1 , 50) ;
-		HAL_UART_Receive_IT (& huart1 , & temp , 1) ;
+if( huart -> Instance == USART3 ) {
+		HAL_UART_Transmit (& huart3 , temp , 1 , 50) ;
+		HAL_UART_Receive_IT (& huart3 , temp , 1) ;
 	}
 }
+
+
 /* USER CODE END 0 */
 
 /**
@@ -106,7 +107,7 @@ if( huart -> Instance == USART2 ) {
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-//int index =0;
+int index=0;
 //setTimer(0, 50);
   /* USER CODE END 1 */
 
@@ -131,16 +132,25 @@ buttonInnit();
   MX_GPIO_Init();
   MX_TIM2_Init();
   MX_TIM3_Init();
-  MX_USART1_UART_Init();
+  MX_USART3_UART_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_Base_Start_IT (& htim2 );
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
+//  __HAL_UART_ENABLE_IT(&huart2, UART_IT_RXNE);
+  HAL_UART_Receive_IT(&huart2, temp, 20);
+  HAL_UART_Receive_IT(&huart3, temp, 20);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+//	  printf("Counter: %d", index++);
+
+//	  HAL_UART_Transmit(&huart3, temp, 10, 1000);
+//	  HAL_GPIO_TogglePin(LED2_GPIO_Port, LED2_Pin);
+//	  Display(index++);
+//	  HAL_Delay(500);
 //	  if (index > 3) index =0;
 //	  if(isTimerOn(0)){
 //		  test(index++);
@@ -338,35 +348,35 @@ static void MX_TIM3_Init(void)
 }
 
 /**
-  * @brief USART1 Initialization Function
+  * @brief USART3 Initialization Function
   * @param None
   * @retval None
   */
-static void MX_USART1_UART_Init(void)
+static void MX_USART3_UART_Init(void)
 {
 
-  /* USER CODE BEGIN USART1_Init 0 */
+  /* USER CODE BEGIN USART3_Init 0 */
 
-  /* USER CODE END USART1_Init 0 */
+  /* USER CODE END USART3_Init 0 */
 
-  /* USER CODE BEGIN USART1_Init 1 */
+  /* USER CODE BEGIN USART3_Init 1 */
 
-  /* USER CODE END USART1_Init 1 */
-  huart1.Instance = USART1;
-  huart1.Init.BaudRate = 115200;
-  huart1.Init.WordLength = UART_WORDLENGTH_8B;
-  huart1.Init.StopBits = UART_STOPBITS_1;
-  huart1.Init.Parity = UART_PARITY_NONE;
-  huart1.Init.Mode = UART_MODE_TX_RX;
-  huart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
-  huart1.Init.OverSampling = UART_OVERSAMPLING_16;
-  if (HAL_UART_Init(&huart1) != HAL_OK)
+  /* USER CODE END USART3_Init 1 */
+  huart3.Instance = USART3;
+  huart3.Init.BaudRate = 115200;
+  huart3.Init.WordLength = UART_WORDLENGTH_8B;
+  huart3.Init.StopBits = UART_STOPBITS_1;
+  huart3.Init.Parity = UART_PARITY_NONE;
+  huart3.Init.Mode = UART_MODE_TX_RX;
+  huart3.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+  huart3.Init.OverSampling = UART_OVERSAMPLING_16;
+  if (HAL_UART_Init(&huart3) != HAL_OK)
   {
     Error_Handler();
   }
-  /* USER CODE BEGIN USART1_Init 2 */
+  /* USER CODE BEGIN USART3_Init 2 */
 
-  /* USER CODE END USART1_Init 2 */
+  /* USER CODE END USART3_Init 2 */
 
 }
 

@@ -10,7 +10,7 @@
 void fsm_automatic_run(int lane){
 	if (timer[lane].count % 100 == 0){
 		int remaining_time = timer[lane].count / 100;
-		Display(remaining_time);
+		Display(timer[0].count / 100, timer[1].count / 100);
 		if(!lane && PEDESTRIAN_MODE && LED_STATE[0] == RED_STATE){
 			int freq= (RED_DURATION *100 - remaining_time) *10;
 			buzzer(freq);

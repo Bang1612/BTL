@@ -25,9 +25,9 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h \
  ../Core/Inc/global_vars.h ../Core/Inc/timer.h ../Core/Inc/button.h \
- ../Core/Inc/main.h ../Core/Inc/transfer.h ../Core/Inc/traffic_light.h \
- ../Core/Inc/fsm_auto.h ../Core/Inc/pedestrian.h ../Core/Inc/fsm_manual.h \
- ../Core/Inc/global_vars.h
+ ../Core/Inc/transfer.h ../Core/Inc/main.h ../Core/Inc/traffic_light.h \
+ ../Core/Inc/fsm_auto.h ../Core/Inc/fsm_manual.h \
+ ../Core/Inc/global_vars.h ../Core/Inc/pedestrian.h
 
 ../Core/Inc/main.h:
 
@@ -87,16 +87,16 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 
 ../Core/Inc/button.h:
 
-../Core/Inc/main.h:
-
 ../Core/Inc/transfer.h:
+
+../Core/Inc/main.h:
 
 ../Core/Inc/traffic_light.h:
 
 ../Core/Inc/fsm_auto.h:
 
-../Core/Inc/pedestrian.h:
-
 ../Core/Inc/fsm_manual.h:
 
 ../Core/Inc/global_vars.h:
+
+../Core/Inc/pedestrian.h:

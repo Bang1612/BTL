@@ -1,5 +1,7 @@
 Core/Src/button.o: ../Core/Src/button.c ../Core/Inc/button.h \
- ../Core/Inc/main.h ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h \
+ ../Core/Inc/global_vars.h ../Core/Inc/timer.h ../Core/Inc/button.h \
+ ../Core/Inc/transfer.h ../Core/Inc/main.h \
+ ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h \
  ../Core/Inc/stm32f1xx_hal_conf.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h \
@@ -24,12 +26,19 @@ Core/Src/button.o: ../Core/Src/button.c ../Core/Inc/button.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h \
- ../Core/Inc/global_vars.h ../Core/Inc/timer.h ../Core/Inc/button.h \
- ../Core/Inc/transfer.h ../Core/Inc/traffic_light.h \
- ../Core/Inc/fsm_auto.h ../Core/Inc/pedestrian.h ../Core/Inc/fsm_manual.h \
- ../Core/Inc/global_vars.h
+ ../Core/Inc/traffic_light.h ../Core/Inc/fsm_auto.h \
+ ../Core/Inc/fsm_manual.h ../Core/Inc/global_vars.h \
+ ../Core/Inc/pedestrian.h
 
 ../Core/Inc/button.h:
+
+../Core/Inc/global_vars.h:
+
+../Core/Inc/timer.h:
+
+../Core/Inc/button.h:
+
+../Core/Inc/transfer.h:
 
 ../Core/Inc/main.h:
 
@@ -83,20 +92,12 @@ Core/Src/button.o: ../Core/Src/button.c ../Core/Inc/button.h \
 
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:
 
-../Core/Inc/global_vars.h:
-
-../Core/Inc/timer.h:
-
-../Core/Inc/button.h:
-
-../Core/Inc/transfer.h:
-
 ../Core/Inc/traffic_light.h:
 
 ../Core/Inc/fsm_auto.h:
 
-../Core/Inc/pedestrian.h:
-
 ../Core/Inc/fsm_manual.h:
 
 ../Core/Inc/global_vars.h:
+
+../Core/Inc/pedestrian.h:

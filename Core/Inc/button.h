@@ -9,6 +9,7 @@
 #define INC_BUTTON_H_
 
 #include "global_vars.h"
+#include "stm32f1xx_hal.h"
 
 #define NORMAL_STATE GPIO_PIN_SET
 #define PRESSED_STATE GPIO_PIN_RESET
