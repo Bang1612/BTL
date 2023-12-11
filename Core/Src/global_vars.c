@@ -20,5 +20,5 @@ int GREEN_INNIT = 5;
 int PEDESTRIAN_DURATION = 20;
 int BUZZER_DURATION = 2;
 
-char info1[20];
-char info2[20];
+char info[15];
+

@@ -61,41 +61,8 @@ static void MX_USART3_UART_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-void test(int i){
-	switch(i){
-	case 0:
-		setRed(0);
-		setGreen(1);
-//		HAL_Delay(GREEN_DURATION * 1000);
-		break;
-	case 1:
-		setRed(0);
-		setAmber(1);
-//		HAL_Delay(YELLOW_DURATION * 1000);
-		break;
-	case 2:
-		setGreen(0);
-		setRed(1);
-//		HAL_Delay(GREEN_DURATION * 1000);
-		break;
-	case 3:
-		setAmber(0);
-		setRed(1);
-//		HAL_Delay(YELLOW_DURATION * 1000);
-		break;
-	default:
-		i =0;
-		break;
-	}
-}
 
-char temp[20]="HELO";
-void HAL_UART_RxCpltCallback ( UART_HandleTypeDef * huart ) {
-if( huart -> Instance == USART3 ) {
-		HAL_UART_Transmit (& huart3 , temp , 1 , 50) ;
-		HAL_UART_Receive_IT (& huart3 , temp , 1) ;
-	}
-}
+
 
 
 /* USER CODE END 0 */
@@ -107,8 +74,7 @@ if( huart -> Instance == USART3 ) {
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-int index=0;
-//setTimer(0, 50);
+
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -137,67 +103,15 @@ buttonInnit();
   HAL_TIM_Base_Start_IT (& htim2 );
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
 //  __HAL_UART_ENABLE_IT(&huart2, UART_IT_RXNE);
-  HAL_UART_Receive_IT(&huart2, temp, 20);
-  HAL_UART_Receive_IT(&huart3, temp, 20);
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-//	  printf("Counter: %d", index++);
 
-//	  HAL_UART_Transmit(&huart3, temp, 10, 1000);
-//	  HAL_GPIO_TogglePin(LED2_GPIO_Port, LED2_Pin);
-//	  Display(index++);
-//	  HAL_Delay(500);
-//	  if (index > 3) index =0;
-//	  if(isTimerOn(0)){
-//		  test(index++);
-//		  setTimer(0, 50);
-//	  }
 	  fsm_manual_run();
-//	  buzzer(500);
-//	  if(isButtonPressed(3)){
-//		  setRed(0);
-//		  setGreen(1);
-//		  setAmber(2);
-//	  }
-//	  if(isButtonPressed(0)){
-//		  HAL_GPIO_WritePin(WALKER_LIGHT_0_GPIO_Port, WALKER_LIGHT_0_Pin, !HAL_GPIO_ReadPin(BUTTON_1_GPIO_Port, BUTTON_1_Pin));
-//		  setRed(0);
-//		  setRed(1);
-//		  setRed(2);
-//	  }
-//	  if(isButtonPressed(1)){
-//		  setAmber(0);
-//		  setAmber(1);
-//		  setAmber(2);
-//	  }
-//	  if(isButtonLongPressed(0)){
-//		  setGreen(0);
-//		  setGreen(1);
-//		  setGreen(2);
-//	  }
-//	  if(isButtonLongPressed(1)){
-//		  setTrafficLightDefault(0);
-//		  setTrafficLightDefault(1);
-//	  }
-//
-//	  HAL_GPIO_WritePin(WALKER_LIGHT_1_GPIO_Port, WALKER_LIGHT_1_Pin, !HAL_GPIO_ReadPin(BUTTON_2_GPIO_Port, BUTTON_2_Pin));
-//	  fsm_manual_run();
-
-//	  if(isButtonPressed(3)){
-//		  HAL_GPIO_TogglePin(LED1_GPIO_Port, LED1_Pin);
-//	  }
-//	  test(index);
-//	  if(isButtonPressed(0)){
-//		  HAL_GPIO_TogglePin(WALKER_LIGHT_0_GPIO_Port, WALKER_LIGHT_0_Pin);
-//	  }
-//	  if(isButtonPressed(1)){
-//		  HAL_GPIO_TogglePin(WALKER_LIGHT_1_GPIO_Port, WALKER_LIGHT_1_Pin);
-//	  }
-//	  HAL_Delay(1000);
 
     /* USER CODE END WHILE */
 
@@ -443,6 +357,7 @@ static void MX_GPIO_Init(void)
 void HAL_TIM_PeriodElapsedCallback ( TIM_HandleTypeDef * htim ){
 	  timerRun();
 	  getKeyInput();
+
 }
 /* USER CODE END 4 */
 

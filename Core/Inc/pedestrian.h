@@ -12,7 +12,7 @@
 
 #include "global_vars.h"
 
-void ped_run();
+
 void buzzer(unsigned int freq);
 
 #endif /* INC_PEDESTRIAN_H_ */

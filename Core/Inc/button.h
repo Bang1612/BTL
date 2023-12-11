@@ -16,14 +16,14 @@
 #define NUMBER_OF_BUTTON 4
 
 struct{
-	int reg[3];
+	int reg[5];
 	int is_pressed;
 	int is_long_pressed;
 	int timer;
 	GPIO_TypeDef *gpio;
 	uint16_t pin;
 } button[NUMBER_OF_BUTTON];
-
+void ButtonInitializer(int i);
 void buttonInnit(void);
 int isButtonPressed(int i);
 int isButtonLongPressed(int index);

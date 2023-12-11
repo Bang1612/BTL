@@ -6,9 +6,9 @@
  */
 #include "timer.h"
 
-//Timer 0: 1 sec for LED
-//Timer 2: 500 ms
-//Timer
+//Timer 0: lane 1
+//Timer 2: lane 2
+//Timer 3: mode changing
 
 void Innitial_Timer(int i){
 	if(i == 0){
@@ -57,5 +57,5 @@ void timerRun(void){
 }
 
 int isTimerOn(unsigned index){
-	return timer[index].flag;
+	return timer[index].flag == 1;
 }

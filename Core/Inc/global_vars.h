@@ -39,7 +39,6 @@ extern int YELLOW_INNIT;
 extern int GREEN_INNIT;
 extern int PEDESTRIAN_DURATION;
 extern int COUNTER[2];
-char info1[20];
-char info2[20];
+extern char info[15];
 
 #endif /* INC_GLOBAL_VARS_H_ */

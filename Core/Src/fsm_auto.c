@@ -8,13 +8,15 @@
 #include "fsm_auto.h"
 
 void fsm_automatic_run(int lane){
-	if (timer[lane].count % 100 == 0){
-		int remaining_time = timer[lane].count / 100;
-		Display(timer[0].count / 100, timer[1].count / 100);
-		if(!lane && PEDESTRIAN_MODE && LED_STATE[0] == RED_STATE){
-			int freq= (RED_DURATION *100 - remaining_time) *10;
-			buzzer(freq);
-		}
+
+	Display(timer[0].count / 100, timer[1].count / 100);
+	if (PEDESTRIAN_MODE && LED_STATE[0] == RED_STATE) {
+		int freq = ((RED_DURATION * 100 - timer[0].count) / RED_DURATION)*21 ;
+		buzzer(freq);
+
+	}
+	if(LED_STATE[0] != RED_STATE){
+		buzzer(0);
 	}
 	switch(LED_STATE[lane]){
 		case INIT_STATE:

@@ -23,16 +23,16 @@ void ButtonInitializer(int i){
 		button[i].is_long_pressed=0;
 		button[i].is_pressed=0;
 		button[i].pin= BUTTON_PIN[i];
-		button[i].reg[0]= button[i].reg[1] = button[i].reg[2] = NORMAL_STATE;
-		button[i].timer= 100;
+		button[i].reg[0]= button[i].reg[1] = button[i].reg[2] = button[i].reg[3] = button[i].reg[4] = NORMAL_STATE;
+		button[i].timer= 500;
 	}
 	else{
 		button[i].gpio= BUTTON_PORT[i];
 		button[i].is_long_pressed=0;
 		button[i].is_pressed=0;
 		button[i].pin= BUTTON_PIN[i];
-		button[i].reg[0]= button[i].reg[1] = button[i].reg[2] = NORMAL_STATE;
-		button[i].timer= 100;
+		button[i].reg[0]= button[i].reg[1] = button[i].reg[2] = button[i].reg[3] = button[i].reg[4] = NORMAL_STATE;
+		button[i].timer= 500;
 		ButtonInitializer(i-1);
 	}
 }
@@ -79,30 +79,42 @@ void getInput(int i){
 	if (i == 0) {
 		button[i].reg[0] = button[i].reg[1];
 		button[i].reg[1] = button[i].reg[2];
-		button[i].reg[2] = HAL_GPIO_ReadPin(BUTTON_PORT[i], BUTTON_PIN[i]);
+		button[i].reg[2] = button[i].reg[3];
+		button[i].reg[3] = button[i].reg[4];
+		button[i].reg[4] = HAL_GPIO_ReadPin(BUTTON_PORT[i], BUTTON_PIN[i]);
 		if (button[i].reg[0] == button[i].reg[1]
-				&& button[i].reg[1] == button[i].reg[2]) {
-			if (button[i].reg[2] == PRESSED_STATE) {
-				button[i].is_pressed = 1;
+				&& button[i].reg[1] == button[i].reg[2]
+				&& button[i].reg[2] == button[i].reg[3]
+				&& button[i].reg[3] == button[i].reg[4]) {
+			if (button[i].reg[4] == PRESSED_STATE) {
 				if (button[i].timer > 0) {
 					button[i].timer--;
-				} else {
+
+				}
+				else {
 					button[i].is_long_pressed = 1;
+				}
+				if (button[i].timer <= 490) {
+					button[i].is_pressed = 1;
 				}
 			} else {
 				button[i].is_pressed = 0;
 				button[i].is_long_pressed = 0;
-				button[i].timer = 100;
+				button[i].timer = 500;
 			}
 		}
 	}
 	else {
 		button[i].reg[0] = button[i].reg[1];
 		button[i].reg[1] = button[i].reg[2];
-		button[i].reg[2] = HAL_GPIO_ReadPin(BUTTON_PORT[i], BUTTON_PIN[i]);
+		button[i].reg[2] = button[i].reg[3];
+		button[i].reg[3] = button[i].reg[4];
+		button[i].reg[4] = HAL_GPIO_ReadPin(BUTTON_PORT[i], BUTTON_PIN[i]);
 		if (button[i].reg[0] == button[i].reg[1]
-				&& button[i].reg[1] == button[i].reg[2]) {
-			if (button[i].reg[2] == PRESSED_STATE) {
+				&& button[i].reg[1] == button[i].reg[2]
+				&& button[i].reg[2] == button[i].reg[3]
+				&& button[i].reg[3] == button[i].reg[4]) {
+			if (button[i].reg[4] == PRESSED_STATE) {
 				button[i].is_pressed = 1;
 				if (button[i].timer > 0) {
 					button[i].timer--;
@@ -112,7 +124,7 @@ void getInput(int i){
 			} else {
 				button[i].is_pressed = 0;
 				button[i].is_long_pressed = 0;
-				button[i].timer = 100;
+				button[i].timer = 500;
 			}
 		}
 		getInput(i-1);
