@@ -54,14 +54,7 @@ void setGreen(int lane){
 		HAL_GPIO_WritePin(WALKER_LIGHT_1_GPIO_Port, WALKER_LIGHT_1_Pin, SET);
 		break;
 	default:
-//		HAL_GPIO_WritePin(TRAFFIC_LIGHT_1_0_GPIO_Port, TRAFFIC_LIGHT_1_0_Pin,
-//				RESET);
-//		HAL_GPIO_WritePin(TRAFFIC_LIGHT_1_1_GPIO_Port, TRAFFIC_LIGHT_1_1_Pin,
-//				RESET);
-//		HAL_GPIO_WritePin(TRAFFIC_LIGHT_2_0_GPIO_Port, TRAFFIC_LIGHT_2_0_Pin,
-//				RESET);
-//		HAL_GPIO_WritePin(TRAFFIC_LIGHT_2_1_GPIO_Port, TRAFFIC_LIGHT_2_1_Pin,
-//				RESET);
+
 		break;
 
 	}
@@ -86,14 +79,7 @@ void setRed(int lane){
 		HAL_GPIO_WritePin(WALKER_LIGHT_1_GPIO_Port, WALKER_LIGHT_1_Pin, RESET);
 		break;
 	default:
-//		HAL_GPIO_WritePin(TRAFFIC_LIGHT_1_0_GPIO_Port, TRAFFIC_LIGHT_1_0_Pin,
-//				RESET);
-//		HAL_GPIO_WritePin(TRAFFIC_LIGHT_1_1_GPIO_Port, TRAFFIC_LIGHT_1_1_Pin,
-//				RESET);
-//		HAL_GPIO_WritePin(TRAFFIC_LIGHT_2_0_GPIO_Port, TRAFFIC_LIGHT_2_0_Pin,
-//				RESET);
-//		HAL_GPIO_WritePin(TRAFFIC_LIGHT_2_1_GPIO_Port, TRAFFIC_LIGHT_2_1_Pin,
-//				RESET);
+
 		break;
 
 	}
@@ -113,19 +99,9 @@ void setAmber(int lane){
 		HAL_GPIO_WritePin(TRAFFIC_LIGHT_2_1_GPIO_Port, TRAFFIC_LIGHT_2_1_Pin,
 				SET);
 		break;
-//	case 2:
-//		HAL_GPIO_WritePin(WALKER_LIGHT_0_GPIO_Port, WALKER_LIGHT_1_Pin, SET);
-//		HAL_GPIO_WritePin(WALKER_LIGHT_1_GPIO_Port, WALKER_LIGHT_1_Pin, SET);
-//		break;
+
 	default:
-//		HAL_GPIO_WritePin(TRAFFIC_LIGHT_1_0_GPIO_Port, TRAFFIC_LIGHT_1_0_Pin,
-//				RESET);
-//		HAL_GPIO_WritePin(TRAFFIC_LIGHT_1_1_GPIO_Port, TRAFFIC_LIGHT_1_1_Pin,
-//				RESET);
-//		HAL_GPIO_WritePin(TRAFFIC_LIGHT_2_0_GPIO_Port, TRAFFIC_LIGHT_2_0_Pin,
-//				RESET);
-//		HAL_GPIO_WritePin(TRAFFIC_LIGHT_2_1_GPIO_Port, TRAFFIC_LIGHT_2_1_Pin,
-//				RESET);
+
 		break;
 
 	}

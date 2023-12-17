@@ -1,2 +1,1 @@
-pedestrian.c:9:6:ped_run	4	static
-pedestrian.c:34:6:buzzer	16	static
+pedestrian.c:11:6:buzzer	16	static

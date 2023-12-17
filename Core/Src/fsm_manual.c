@@ -85,7 +85,7 @@ void fsm_manual_run(){
 				if(isTimerOn(3) ==1){
 					tempDuration++;
 					tempDuration %= 100;
-					setTimer(3,50);
+					setTimer(4,50);
 				}
 			}
 			if (isButtonPressed(2) == 1){
@@ -118,7 +118,7 @@ void fsm_manual_run(){
 				if(isTimerOn(3) ==1){
 					tempDuration++;
 					tempDuration %= 100;
-					setTimer(3,50);
+					setTimer(4,50);
 				}
 			}
 			if (isButtonPressed(2) == 1){
@@ -161,7 +161,7 @@ void fsm_manual_run(){
 				if(isTimerOn(3) ==1){
 					tempDuration++;
 					tempDuration %= 100;
-					setTimer(3,50);
+					setTimer(4,50);
 				}
 			}
 			if (isButtonPressed(2) == 1){
@@ -180,7 +180,7 @@ void fsm_manual_run(){
 			MODE=MODE_1;
 			break;
 	}
-	ped_run();
+
 }
 
 

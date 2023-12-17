@@ -12,9 +12,13 @@ void fsm_automatic_run(int lane){
 	Display(timer[0].count / 100, timer[1].count / 100);
 	if (PEDESTRIAN_MODE && LED_STATE[0] == RED_STATE) {
 		int freq = ((RED_DURATION * 100 - timer[0].count) / RED_DURATION)*21 ;
-		buzzer(freq);
+            if(timer[0].count >= (RED_DURATION * 60) && timer[0].count <= (RED_DURATION * 80)) buzzer(0);
+            else if(timer[0].count >= (RED_DURATION * 20) && timer[0].count <= (RED_DURATION * 40)) buzzer(0);
+            else buzzer(freq);
 
 	}
+
+
 	if(LED_STATE[0] != RED_STATE){
 		buzzer(0);
 	}
